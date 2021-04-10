@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 import router from "./routes/router.js";
 import "dotenv/config.js";
 
@@ -8,6 +9,7 @@ let port = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 // connecting MongoDB
 mongoose

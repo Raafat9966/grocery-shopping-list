@@ -9,7 +9,7 @@ const schema = new mongoose.Schema({
 	priority: {
 		type: Number,
 	},
-	isDone: {
+	purchase: {
 		type: Boolean,
 		default: false,
 	},
