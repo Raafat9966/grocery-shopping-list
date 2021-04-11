@@ -15,12 +15,20 @@ function Interface() {
 				console.log(err);
 			});
 	}, [items]);
+
 	return (
 		<div>
 			<Inputs />
-			{items.map((item) => (
-				<List item={item} key={item._id} />
-			))}
+			{items
+				.sort((a, b) => a.priority - b.priority)
+				.map((item) => (
+					<List
+						item={item}
+						key={item._id}
+						items={items}
+						setItems={setItems}
+					/>
+				))}
 		</div>
 	);
 }

@@ -38,6 +38,19 @@ const updateItem = async (req, res, next) => {
 		next(err);
 	}
 };
+const purchasedItem = async (req, res, next) => {
+	try {
+		//let { purchase } = req.body;
+		let item = await Item.findByIdAndUpdate(
+			{ _id: req.params.id },
+			{ purchase: req.body.purchase },
+			{ new: true }
+		);
+		res.status(200).send(item);
+	} catch (err) {
+		next(err);
+	}
+};
 
 const removeItem = async (req, res, next) => {
 	try {
@@ -46,4 +59,10 @@ const removeItem = async (req, res, next) => {
 	} catch (err) {}
 };
 
-export default { getAllItems, createItem, updateItem, removeItem };
+export default {
+	getAllItems,
+	createItem,
+	updateItem,
+	removeItem,
+	purchasedItem,
+};
