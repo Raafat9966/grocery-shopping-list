@@ -11,7 +11,7 @@ function Inputs() {
 	};
 
 	return (
-		<div>
+		<div className="w-50">
 			<Form onSubmit={submitHandler}>
 				<Form.Row className="align-items-center">
 					<Col xs="auto" className="my-1">

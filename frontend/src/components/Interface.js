@@ -17,18 +17,17 @@ function Interface() {
 	}, [items]);
 
 	return (
-		<div>
+		<div className="container d-flex flex-column justify-content-center align-items-center">
 			<Inputs />
-			{items
-				.sort((a, b) => a.priority - b.priority)
-				.map((item) => (
-					<List
-						item={item}
-						key={item._id}
-						items={items}
-						setItems={setItems}
-					/>
-				))}
+			<div className="w-50">
+				<ul>
+					{items
+						.sort((a, b) => a.priority - b.priority)
+						.map((item) => (
+							<List item={item} key={item._id} />
+						))}
+				</ul>
+			</div>
 		</div>
 	);
 }

@@ -27,22 +27,26 @@ function List({ item }) {
 			.then(() => setEdit(false));
 	};
 	return (
-		<div>
-			<ul>
-				{!item.purchase ? (
-					<li className="notPurchased">
-						<Form.Group controlId="formBasicCheckbox">
-							<Form.Check
-								type="checkbox"
-								label="Purchased"
-								onClick={purchased}
-							/>
-						</Form.Group>
-						<p>
-							<span>{item.priority} </span>
-							{item.name}
-						</p>
-						{edit && (
+		<>
+			{!item.purchase ? (
+				<li className="notPurchased d-flex flex-flex-column">
+					<Form.Group controlId="formBasicCheckbox">
+						<Form.Check type="checkbox" onClick={purchased} />
+					</Form.Group>
+					<p>
+						{item.name}
+						<span>{item.priority} </span>
+					</p>
+
+					<a onClick={handleEdit}>
+						<i className="fas fa-edit"></i>
+					</a>
+					<a onClick={handleDelete}>
+						<i className="fas fa-trash-alt"></i>
+					</a>
+
+					{edit && (
+						<div>
 							<Form onSubmit={submitUpdate}>
 								<Form.Row className="align-items-center">
 									<Col xs="auto" className="my-1">
@@ -96,34 +100,24 @@ function List({ item }) {
 									</Col>
 								</Form.Row>
 							</Form>
-						)}
-						<a onClick={handleEdit}>
-							<i className="fas fa-edit"></i>
-						</a>
-						<a onClick={handleDelete}>
-							<i className="fas fa-trash-alt"></i>
-						</a>
-					</li>
-				) : (
-					<li className="purchased">
-						<Form.Group controlId="formBasicCheckbox">
-							<Form.Check
-								type="checkbox"
-								label="Purchased"
-								onClick={purchased}
-							/>
-						</Form.Group>
-						<p>
-							<span>{item.priority} </span>
-							{item.name}
-						</p>
-						<a onClick={handleDelete}>
-							<i className="fas fa-trash-alt"></i>
-						</a>
-					</li>
-				)}
-			</ul>
-		</div>
+						</div>
+					)}
+				</li>
+			) : (
+				<li className="purchased">
+					<Form.Group controlId="formBasicCheckbox">
+						<Form.Check type="checkbox" onClick={purchased} />
+					</Form.Group>
+					<p>
+						{item.name}
+						<span>{item.priority} </span>
+					</p>
+					<a onClick={handleDelete}>
+						<i className="fas fa-trash-alt"></i>
+					</a>
+				</li>
+			)}
+		</>
 	);
 }
 
