@@ -7,7 +7,7 @@ function Interface() {
 	const [items, setItems] = React.useState([]);
 	React.useEffect(() => {
 		axios
-			.get("http://localhost:5000")
+			.get("http://localhost:5000/api")
 			.then((result) => {
 				setItems(result.data);
 			})

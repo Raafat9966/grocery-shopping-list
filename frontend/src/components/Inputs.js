@@ -6,7 +6,7 @@ function Inputs() {
 	const [input, setInput] = React.useState({ name: "", priority: 1 });
 	const submitHandler = (e) => {
 		e.preventDefault();
-		axios.post("http://localhost:5000/add", input).then((res) => {});
+		axios.post("http://localhost:5000/api/add", input).then((res) => {});
 		setInput({ name: "", priority: 1 });
 	};
 

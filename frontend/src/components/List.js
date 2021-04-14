@@ -6,7 +6,7 @@ function List({ item }) {
 	const [edit, setEdit] = React.useState(false);
 	const [newItem, setNewItem] = React.useState({ name: "", priority: 1 });
 	const handleDelete = () => {
-		axios.delete(`http://localhost:5000/${item.name}`);
+		axios.delete(`http://localhost:5000/api/${item.name}`);
 	};
 	const handleEdit = () => {
 		setEdit(!edit);
@@ -14,7 +14,7 @@ function List({ item }) {
 
 	const purchased = () => {
 		axios
-			.put(`http://localhost:5000/purchased/${item._id}`, {
+			.put(`http://localhost:5000/purchased/api/${item._id}`, {
 				purchase: !item.purchase,
 			})
 			.then(() => console.log(item.purchase));
@@ -23,7 +23,7 @@ function List({ item }) {
 	const submitUpdate = (e) => {
 		e.preventDefault();
 		axios
-			.put(`http://localhost:5000/${item._id}`, newItem)
+			.put(`http://localhost:5000/api/${item._id}`, newItem)
 			.then(() => setEdit(false));
 	};
 	return (
